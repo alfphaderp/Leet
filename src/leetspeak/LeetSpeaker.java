@@ -1,33 +1,28 @@
 package leetspeak;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
-public class Encoder {
-	static HashMap<Character, String[]> dictionary = new HashMap<Character, String[]>();
-	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+public class LeetSpeaker {
+	private HashMap<Character, String[]> dictionary = new HashMap<Character, String[]>();
 	
-	public static void main(String[] args) {
-		loadDictionary();
-		
-		while(true) {
-			try {
-				System.out.println(encode(input.readLine()));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+	// Load dictionary from constructor
+	public LeetSpeaker(String dic) {
+		loadDictionary(dic);
 	}
 	
-	// Read from a file called dictionary.txt
-	public static void loadDictionary() {
+	// Read from a dictionary file
+	public void loadDictionary(String dic) {
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(new File("dictionary.txt")));
+			BufferedReader reader = new BufferedReader(new FileReader(new File(dic)));
 			StringTokenizer tokenizer;
 			int tokens;
 			char key;
@@ -57,7 +52,7 @@ public class Encoder {
 	}
 	
 	// Encode a single character
-	public static String encode(char ch) {
+	public String encode(char ch) {
 		ch = Character.toUpperCase(ch);
 		
 		if(dictionary.get(ch) != null) {
@@ -69,7 +64,7 @@ public class Encoder {
 	}
 	
 	// Encode a string
-	public static String encode(String str) {
+	public String encode(String str) {
 		String encodedString = "";
 		
 		for(int i = 0; i < str.length(); i++) {
@@ -82,5 +77,23 @@ public class Encoder {
 		}
 		
 		return encodedString;
+	}
+	
+	// Encode a file
+	public void encodeFile(String source, String destination) {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(new File(source)));
+			PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(new File(destination))));
+			
+			while(reader.ready()) {
+				writer.println(encode(reader.readLine()));
+			}
+			
+			reader.close();
+			writer.close();
+		}
+		catch(IOException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 }
