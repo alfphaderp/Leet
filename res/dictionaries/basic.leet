@@ -1,9 +1,8 @@
-
-A: A a 4
+A: A a 4 ^
 B: B b 8
-C: C c (
+C: C c ( <
 D: D d
-E: E e 3
+E: E e 3 &
 F: F f
 G: G g 9
 H: H h #
@@ -13,7 +12,7 @@ K: K k |<
 L: L l 1
 M: M m
 N: N n
-O: O o 0
+O: O o 0 *
 P: P p
 Q: Q q
 R: R r

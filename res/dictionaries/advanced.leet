@@ -1,6 +1,6 @@
-A: A a 4 @ /\
+A: A a 4 @ ^ /\
 B: B b 6 8 [3 |3
-C: C c (
+C: C c ( <
 D: D d |) [)
 E: E e 3 &
 F: F f |= |#
@@ -12,7 +12,7 @@ K: K k |<
 L: L l 1 ! |_
 M: M m /\/\
 N: N n /\/
-O: O o 0 ()
+O: O o 0 * ()
 P: P p |D |>
 Q: Q q (,)
 R: R r 2 |2
