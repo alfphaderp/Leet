@@ -10,17 +10,17 @@ I: I i ! :
 J: J j ,| _|
 K: K k |<
 L: L l 1 ! |_
-M: M m /\/\ |\/|
-N: N n /\/ |\|
-O: O o 0 () []
+M: M m /\/\
+N: N n /\/
+O: O o 0 ()
 P: P p |D |>
 Q: Q q (,)
 R: R r 2 |2
 S: S s 5 $
-T: T t 7 + '|' `|`
-U: U u (_) [_]
+T: T t 7 +
+U: U u (_)
 V: V v \/ \_/
-W: W w \/\/ |/\|
+W: W w \/\/
 X: X x ><
-Y: Y y V/ `/
+Y: Y y `/
 Z: Z z 2 %

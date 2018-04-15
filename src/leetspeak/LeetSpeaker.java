@@ -5,11 +5,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
 public class LeetSpeaker {
 	private HashMap<Character, String[]> dictionary = new HashMap<Character, String[]>();
@@ -24,24 +23,24 @@ public class LeetSpeaker {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(new File(dic)));
 			StringTokenizer tokenizer;
-			int tokens;
-			char key;
 			String[] values;
+			int count;
+			char key;
 			
 			while(reader.ready()) {
-				// Assign key to the first character of each line
 				tokenizer = new StringTokenizer(reader.readLine());
-				key = tokenizer.nextToken().charAt(0);
 				
-				// Assign values to an array of strings
-				tokens = tokenizer.countTokens();
-				values = new String[tokens];
-				for(int i = 0; i < tokens; i++) {
-					values[i] = tokenizer.nextToken();
+				if(tokenizer.countTokens() > 0) {
+					key = tokenizer.nextToken().charAt(0);
+					count = tokenizer.countTokens();
+					values = new String[count];
+					
+					for(int i = 0; i < count; i++) {
+						values[i] = tokenizer.nextToken();
+					}
+					
+					dictionary.put(key, values);
 				}
-				
-				// Put key with values into dictionary
-				dictionary.put(key, values);
 			}
 			
 			reader.close();
@@ -54,9 +53,10 @@ public class LeetSpeaker {
 	// Encode a single character
 	public String encode(char ch) {
 		ch = Character.toUpperCase(ch);
+		String[] values = dictionary.get(ch); 
 		
-		if(dictionary.get(ch) != null) {
-			return dictionary.get(ch)[(int) Math.floor(Math.random() * dictionary.get(ch).length)];
+		if(values != null) {
+			return values[(int) Math.floor(Math.random() * values.length)];
 		}
 		else {
 			return Character.toString(ch);
